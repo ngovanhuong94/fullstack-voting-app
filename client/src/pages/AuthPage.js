@@ -1,10 +1,11 @@
 import React from 'react'
+import Auth from '../components/Auth'
 
 class AuthPage extends React.Component {
     render () {
         return (
             <div>
-                This is AuthPage
+                <Auth />
             </div>
         )
     }

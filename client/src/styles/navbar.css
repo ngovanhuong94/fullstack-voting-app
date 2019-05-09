@@ -11,7 +11,7 @@
 
 .navbar-brand {
     color: var(--blue);
-    background: var(--light);
+    background: white;
     padding: 8px;
     text-decoration: none;
     text-transform: uppercase;
