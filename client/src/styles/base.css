@@ -1,0 +1,9 @@
+:root {
+    --blue: #B0C4DE;
+    --light: #FFFAFA;
+}
+
+.container {
+    margin: 0 auto;
+    width: 80%;
+}
