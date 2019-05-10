@@ -25,3 +25,36 @@ exports.register = async function (req, res, next) {
        return res.status(400).json({ message: err.message })
    }
 }
+
+
+exports.login = async (req, res ) => {
+    try {
+        // find user by username
+        const user = await User.findOne({ username: req.body.username })
+        const { id, username } = user
+
+        // compare password
+        const valid = await user.comparePassword(req.body.password)
+
+        if (valid) {
+            // create token
+            const token = jwt.sign({ id, username }, process.env.SECRET)
+            // send data to client
+            return res.status(200).json({ 
+                id,
+                username,
+                token
+            })
+        } else {
+            // when password not match
+            return res.status(400).json({
+                message: 'Invalid username or password'
+            })
+        }
+    } catch (err) {
+        // when username not found
+        return res.status(400).json({
+            message: 'Invalid username or password'
+        })
+    }
+}
