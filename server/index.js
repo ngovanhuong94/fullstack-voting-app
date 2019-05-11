@@ -2,6 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 // setup environment
 dotenv.config()
@@ -15,7 +16,7 @@ const app = express()
 // middlewares
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-
+app.use(cors())
 // routes
 app.use('/api/auth', require('./routes/user'))
 

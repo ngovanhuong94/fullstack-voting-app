@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { authUser } from '../actions/auth'
 
 class Auth extends React.Component {
     constructor (props) {
@@ -13,7 +15,8 @@ class Auth extends React.Component {
     handleSubmit = (e) => { 
         e.preventDefault()
         const { username, password } = this.state
-        console.log({ username, password })
+        const { authType } = this.props
+        this.props.authUser(authType || 'login', { username, password })
     }
     render () {
         const { username, password } = this.state
@@ -49,4 +52,8 @@ class Auth extends React.Component {
     }
 }
 
-export default Auth
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, { authUser })(Auth)
