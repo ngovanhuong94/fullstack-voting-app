@@ -1,6 +1,7 @@
 import {
     SET_CURRENT_USER,
 } from '../constants'
+import { addError, removeError } from './error'
 import * as API  from '../utils/api'
 
 
@@ -12,7 +13,9 @@ export const authUser = (path, data) => async (dispatch) => {
             type: SET_CURRENT_USER,
             user
         })
+        dispatch(removeError())
     } catch (err) {
-        console.log(err)
+        const { message } = err.response.data
+        dispatch(addError(message))
     }
 }

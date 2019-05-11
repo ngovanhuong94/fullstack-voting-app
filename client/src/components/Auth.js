@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { authUser } from '../actions/auth'
 
@@ -10,7 +11,11 @@ class Auth extends React.Component {
             password: ''
         }
     }
-
+    componentDidUpdate() {
+        if (this.props.isAuthenticated) {
+            this.props.history.push('/')
+        }
+    }
     handleChange = (e) => { this.setState({ [e.target.name]: e.target.value })}
     handleSubmit = (e) => { 
         e.preventDefault()
@@ -56,4 +61,4 @@ const mapStateToProps = (state) => ({
     isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps, { authUser })(Auth)
+export default connect(mapStateToProps, { authUser })(withRouter(Auth))

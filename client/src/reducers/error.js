@@ -12,7 +12,7 @@ export default function (state = initialState, action) {
         case ADD_ERROR:
             return {
                 ...state,
-                message: action.message
+                message: action.error
             }
         case REMOVE_ERROR:
             return {
