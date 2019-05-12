@@ -5,6 +5,14 @@ import { addError, removeError } from './error'
 import * as API  from '../utils/api'
 
 
+export const logout = () => (dispatch) => {
+    localStorage.clear()
+    dispatch({
+        type: SET_CURRENT_USER,
+        user: null
+    })
+}
+
 export const authUser = (path, data) => async (dispatch) => {
     try {
         const { token, ...user } = await API.call('post', `/auth/${path}`, data);
