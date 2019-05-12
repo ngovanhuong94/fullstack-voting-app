@@ -11,11 +11,7 @@ class Auth extends React.Component {
             password: ''
         }
     }
-    componentDidUpdate() {
-        if (this.props.isAuthenticated) {
-            this.props.history.push('/')
-        }
-    }
+
     handleChange = (e) => { this.setState({ [e.target.name]: e.target.value })}
     handleSubmit = (e) => { 
         e.preventDefault()
@@ -23,6 +19,7 @@ class Auth extends React.Component {
         const { authType } = this.props
         this.props.authUser(authType || 'login', { username, password })
     }
+    
     render () {
         const { username, password } = this.state
         return (
@@ -57,8 +54,6 @@ class Auth extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    isAuthenticated: state.auth.isAuthenticated
-})
 
-export default connect(mapStateToProps, { authUser })(withRouter(Auth))
+
+export default connect(null, { authUser })(withRouter(Auth))

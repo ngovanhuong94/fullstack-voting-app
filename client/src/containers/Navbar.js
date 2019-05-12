@@ -20,7 +20,7 @@ class Navbar extends React.Component {
                         { isAuthenticated 
                             ? (
                                 <li>
-                                    <NavLink className="navbar-item" to="/">Create Poll</NavLink>
+                                    <NavLink className="navbar-item" to="/polls/new">Create Poll</NavLink>
                                     <NavLink 
                                         onClick={this.handleLogout} 
                                         className="navbar-item" 
