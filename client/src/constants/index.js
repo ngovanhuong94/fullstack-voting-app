@@ -1,3 +1,5 @@
 export const ADD_ERROR = 'ADD_ERROR'
 export const REMOVE_ERROR = 'REMOVE_ERRR'
 export const SET_CURRENT_USER = 'SET_CURRENT_USER'
+export const SET_CURRENT_POLL = 'SET_CURRENT_POLL'
+export const SET_POLLS = 'SET_POLLS'

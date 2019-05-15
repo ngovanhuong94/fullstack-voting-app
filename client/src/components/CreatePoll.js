@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
-
+import { connect } from 'react-redux'
+import { createPoll } from '../actions/poll'
 
 
 class CreatePoll extends React.Component {
@@ -16,7 +17,7 @@ class CreatePoll extends React.Component {
     handleSubmit = (e) => { 
         e.preventDefault()
         const { question, options } = this.state
-        console.log({ question, options })
+        this.props.createPoll({ question, options })
     }
     handleChange = (e) => { this.setState({ [e.target.name]: e.target.value })}
     handleChangeOption = (e, index) => {
@@ -64,4 +65,4 @@ class CreatePoll extends React.Component {
     }
 }
 
-export default CreatePoll
+export default connect(null, { createPoll })(CreatePoll)
