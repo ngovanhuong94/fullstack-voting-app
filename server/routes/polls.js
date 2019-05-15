@@ -1,8 +1,7 @@
 const router = require('express').Router()
 const jwtAuth = require('../middleware/auth')
+const pollController = require('../controllers/polls')
 
-router.post('/new', jwtAuth, async (req, res, next) => {
-    res.send('Ok!')
-})
+router.post('/new', jwtAuth, pollController.create)
 
 module.exports = router 

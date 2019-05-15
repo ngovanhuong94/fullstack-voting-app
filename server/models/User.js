@@ -16,7 +16,8 @@ const userSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
-    }
+    },
+    polls: [{ type: Schema.Types.ObjectId, ref: 'Poll'}]
 })
 
 // hash password before saving user

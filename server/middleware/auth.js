@@ -7,7 +7,7 @@ module.exports = function (req, res, next) {
             if (err) {
                 return res.status(400).json({ message: 'Unauthorized'})
             } else {
-                req.decode = decode
+                req.decoded = decode
                 return next()
             }
         })
