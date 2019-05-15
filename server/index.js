@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cors())
 // routes
 app.use('/api/auth', require('./routes/user'))
+app.use('/api/polls', require('./routes/polls'))
 
 const PORT = process.env.PORT || 5000
 // run server
