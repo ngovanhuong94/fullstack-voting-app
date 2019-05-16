@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import Home from '../pages/Home'
 import AuthPage from '../pages/AuthPage'
 import CreatePollPage from '../pages/CreatePollPage'
+import PollPage from '../pages/PollPage'
 
 const RouteViews = ({ auth }) => (
     <main className="container">
@@ -24,6 +25,11 @@ const RouteViews = ({ auth }) => (
                 exact
                 path="/polls/new"
                 render={() => <CreatePollPage isAuthenticated={auth.isAuthenticated} />}
+            />
+            <Route 
+                exact
+                path="/poll/:id"
+                render={() => <PollPage isAuthenticated={auth.isAuthenticated} />}
             />
         </Switch>
     </main>

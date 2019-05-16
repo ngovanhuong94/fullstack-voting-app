@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { createPoll } from '../actions/poll'
 
 
@@ -12,7 +13,12 @@ class CreatePoll extends React.Component {
             options: ['', '']
         }
     }
-
+    componentDidUpdate () {
+        const { currentPoll, history } = this.props 
+        if (Object.keys(currentPoll).length > 0) {
+            history.push(`/poll/${currentPoll._id}`)
+        }
+    }
     handleAddOption = (e) => { this.setState({ options: [...this.state.options, '']})}
     handleSubmit = (e) => { 
         e.preventDefault()
@@ -65,4 +71,8 @@ class CreatePoll extends React.Component {
     }
 }
 
-export default connect(null, { createPoll })(CreatePoll)
+const mapStateToProps = (state) => ({
+    currentPoll: state.currentPoll
+})
+
+export default connect(mapStateToProps, { createPoll })(withRouter(CreatePoll))
