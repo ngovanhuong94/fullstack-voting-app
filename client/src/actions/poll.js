@@ -28,7 +28,22 @@ export const getPolls = () => async (dispatch) => {
         })
         dispatch(removeError())
     } catch (err) {
-        const { message } = err.message.data 
+        const { message } = err.response.data 
+        dispatch(addError(message))
+    }
+}
+
+
+export const getPoll = (pollId) => async (dispatch) => {
+    try {
+        const poll = await API.call('get', `/polls/${pollId}`)
+        dispatch({
+            type: SET_CURRENT_POLL,
+            poll
+        })
+        dispatch(removeError())
+    } catch (err) {
+        const { message } = err.response.data
         dispatch(addError(message))
     }
 }

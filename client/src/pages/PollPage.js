@@ -1,13 +1,14 @@
 import React from 'react'
+import ErrorMessage from '../components/ErrorMessage'
+import Poll from '../components/Poll'
 
 
+const PollPage = (props) => (
+    <div>
+        <ErrorMessage />
+        <Poll {...props}/>
+    </div>
+)
 
-class PollPage extends React.Component {
-    render () {
-        return (
-            <div>This is PollPage</div>
-        )
-    }
-}
 
 export default PollPage

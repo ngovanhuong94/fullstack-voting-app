@@ -29,7 +29,7 @@ const RouteViews = ({ auth }) => (
             <Route 
                 exact
                 path="/poll/:id"
-                render={() => <PollPage isAuthenticated={auth.isAuthenticated} />}
+                render={(props) => <PollPage isAuthenticated={auth.isAuthenticated} {...props}/>}
             />
         </Switch>
     </main>

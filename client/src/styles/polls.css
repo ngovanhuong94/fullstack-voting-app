@@ -1,11 +1,23 @@
+.polls {
+    margin-top: 40px;
+}
 .polls li {
     padding: 8px;
     text-align: center;
     background-color: gray;
-    margin-top: 10px;
+    margin-top: 15px;
+    text-transform: uppercase;
 }
 
 .polls li a {
     text-decoration: none;
     color: var(--blue);
+}
+
+.poll-title {
+    font-size: 32px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+    text-transform: uppercase;
 }
