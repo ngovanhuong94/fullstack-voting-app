@@ -1,5 +1,6 @@
 import {
     SET_CURRENT_POLL,
+    SET_POLLS
 } from '../constants'
 import * as API from '../utils/api'
 import { addError, removeError } from './error'
@@ -14,6 +15,20 @@ export const createPoll = (data) => async (dispatch) => {
         dispatch(removeError())
     } catch (err) {
         const { message } = err.response.data
+        dispatch(addError(message))
+    }
+}
+
+export const getPolls = () => async (dispatch) => {
+    try {
+        const polls = await API.call('get', '/polls')
+        dispatch({
+            type: SET_POLLS,
+            polls 
+        })
+        dispatch(removeError())
+    } catch (err) {
+        const { message } = err.message.data 
         dispatch(addError(message))
     }
 }

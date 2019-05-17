@@ -1,0 +1,11 @@
+.polls li {
+    padding: 8px;
+    text-align: center;
+    background-color: gray;
+    margin-top: 10px;
+}
+
+.polls li a {
+    text-decoration: none;
+    color: var(--blue);
+}
