@@ -10,6 +10,16 @@ exports.getAll = async function (req, res, next) {
     }
 }
 
+exports.getUserPolls = async function (req, res, next) {
+    const { id: userId } = req.decoded
+    try {
+        const polls = await Poll.find({ user: userId }).populate('user', ['username', 'id'])
+        return res.status(200).json(polls)
+    } catch (err) {
+        return res.status(400).json({ message: err.message })
+    }
+}
+
 exports.getPoll = async function (req, res, next) {
     try {
         const poll = await Poll.findById(req.params.pollId).populate('user', ['username', 'id'])
@@ -73,7 +83,6 @@ exports.vote = async function (req, res, next) {
             return res.status(400).json({ message: 'No answer provided.'})
         }
     } catch (err) {
-        console.log(err)
         return res.status(400).json({ message: err.message })
     }
 }
